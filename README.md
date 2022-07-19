@@ -1,2 +1,2 @@
 # facepaint-back
-Frontend for facepaint
+Back end for facepaint
