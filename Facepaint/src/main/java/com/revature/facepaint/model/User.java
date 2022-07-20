@@ -1,12 +1,21 @@
 package com.revature.facepaint.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name="users")
 public class User {
+	@Id
+	@GeneratedValue
 	private int id;
+	@Column
 	private String username;
+	@Column
 	private String password;
+	@Column(name="role_id")
 	private Role role;
+	@Column(name="showcase_art")
 	private String imageID;
 	public User() {
 		super();
