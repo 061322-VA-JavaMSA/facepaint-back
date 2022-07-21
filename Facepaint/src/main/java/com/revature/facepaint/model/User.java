@@ -1,5 +1,6 @@
 package com.revature.facepaint.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -7,14 +8,13 @@ import javax.persistence.*;
 @Table(name="users")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
-	@Column(name="username")
+	@Column
 	private String username;
-	@Column(name="password")
+	@Column
 	private String password;
-	@ManyToOne
-	@JoinColumn(name="role_id")
+	@Column(name="role_id")
 	private Role role;
 	@Column(name="showcase_art")
 	private String imageID;
