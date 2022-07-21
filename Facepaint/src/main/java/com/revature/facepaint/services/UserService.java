@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.facepaint.models.User;
+import com.revature.facepaint.model.User;
 import com.revature.facepaint.repositories.UserRepository;
 
 @Service

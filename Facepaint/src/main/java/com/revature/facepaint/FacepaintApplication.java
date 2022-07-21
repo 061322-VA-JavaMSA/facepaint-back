@@ -9,8 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
-import com.revature.facepaint.models.Role;
-import com.revature.facepaint.models.User;
+import com.revature.facepaint.model.Role;
+import com.revature.facepaint.model.User;
 import com.revature.facepaint.services.UserService;
 
 @SpringBootApplication

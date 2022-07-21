@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.facepaint.models.Role;
-import com.revature.facepaint.models.User;
+import com.revature.facepaint.model.Role;
+import com.revature.facepaint.model.User;
 import com.revature.facepaint.services.UserService;
 
 @RestController

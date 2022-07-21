@@ -1,4 +1,4 @@
-package com.revature.facepaint.models;
+package com.revature.facepaint.model;
 
 import java.util.Objects;
 
