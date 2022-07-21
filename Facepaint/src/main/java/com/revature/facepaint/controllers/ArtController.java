@@ -17,7 +17,7 @@ import com.revature.facepaint.model.User;
 import com.revature.facepaint.services.UserService;
 
 @RestController
-@RequestMapping("/art")
+//@RequestMapping("/art")
 public class ArtController {
 	
 	private UserService us;
@@ -34,8 +34,20 @@ public class ArtController {
 	}
 	
 	
-	@GetMapping(produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<byte[]> getArtAttributes(@RequestParam(name="imageID") String imageID){
+	
+	@GetMapping(value = "/artInfo")
+    public ResponseEntity<String> getArtAttributes(@RequestParam(name="fields") String fields){
+		String urlFront = "https://api.artic.edu/api/v1/artworks?fields=";
+		String url = urlFront+fields;
+		RestTemplate restTemplate = new RestTemplate();
+
+		String artAttr = restTemplate.getForObject(url, String.class);
+		return new ResponseEntity<String>(artAttr, HttpStatus.OK);
+	}
+    
+    
+	@GetMapping(value = "/artwork", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getArtPiece(@RequestParam(name="imageID") String imageID){
 		String urlFront = "https://www.artic.edu/iiif/2/";
 		String urlBack = "/full/843,/0/default.jpg";
 		String url = urlFront+imageID+urlBack;
