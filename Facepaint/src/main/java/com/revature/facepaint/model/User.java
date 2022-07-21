@@ -1,16 +1,33 @@
 package com.revature.facepaint.model;
 
 import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
+@Table(name="users")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(name="username")
 	private String username;
+	@Column(name="password")
 	private String password;
+	@ManyToOne
+	@JoinColumn(name="role_id")
 	private Role role;
+	@Column(name="showcase_art")
 	private String imageID;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public User(int id, String username, String password, Role role, String imageID) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.imageID = imageID;
 	}
 	/**
 	 * @return the id
