@@ -13,8 +13,8 @@ public class User {
 	private String username;
 	@Column
 	private String password;
-	@Column(name="role_id")
-	@Enumerated(EnumType.STRING)
+	@Column(name = "role_id")
+	//@Enumerated(EnumType.STRING) //Will add this if we change how database works
 	private Role role;
 	@Column(name="showcase_art")
 	private String imageID;
