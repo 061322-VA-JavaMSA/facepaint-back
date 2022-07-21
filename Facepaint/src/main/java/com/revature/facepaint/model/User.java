@@ -7,13 +7,14 @@ import java.util.Objects;
 @Table(name="users")
 public class User {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column
 	private String username;
 	@Column
 	private String password;
 	@Column(name="role_id")
+	@Enumerated(EnumType.STRING)
 	private Role role;
 	@Column(name="showcase_art")
 	private String imageID;
