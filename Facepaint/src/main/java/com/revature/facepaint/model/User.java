@@ -1,29 +1,23 @@
 package com.revature.facepaint.model;
 
+import javax.persistence.*;
 import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
 public class User {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(nullable=false, unique=true)
+	@Column
 	private String username;
-	@Column(nullable=false)
+	@Column
 	private String password;
-	@Column(name = "role_id")
+	@Column(name="role_id")
+	@Enumerated(EnumType.STRING)
 	private Role role;
+	@Column(name="showcase_art")
+	private String imageID;
+  
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
