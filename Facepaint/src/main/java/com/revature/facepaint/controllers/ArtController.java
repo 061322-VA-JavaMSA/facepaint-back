@@ -1,0 +1,47 @@
+package com.revature.facepaint.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.revature.facepaint.dto.UserDTO;
+import com.revature.facepaint.exceptions.UserNotFoundException;
+import com.revature.facepaint.model.User;
+import com.revature.facepaint.services.UserService;
+
+@RestController
+@RequestMapping("/art")
+public class ArtController {
+	
+	private UserService us;
+
+	public ArtController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Autowired
+	public ArtController(UserService us) {
+		super();
+		this.us = us;
+	}
+	
+	
+	@GetMapping(produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getArtAttributes(@RequestParam(name="imageID") String imageID){
+		String urlFront = "https://www.artic.edu/iiif/2/";
+		String urlBack = "/full/843,/0/default.jpg";
+		String url = urlFront+imageID+urlBack;
+		RestTemplate restTemplate = new RestTemplate();
+
+		byte[] artPiece = restTemplate.getForObject(url, byte[].class);
+		return new ResponseEntity<byte[]>(artPiece, HttpStatus.OK);
+	}
+}

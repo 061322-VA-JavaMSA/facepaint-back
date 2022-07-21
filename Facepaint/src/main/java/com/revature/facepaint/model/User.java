@@ -14,7 +14,7 @@ public class User {
 	@Column
 	private String password;
 	@Column(name="role_id")
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private Role role;
 	@Column(name="showcase_art")
 	private String imageID;
