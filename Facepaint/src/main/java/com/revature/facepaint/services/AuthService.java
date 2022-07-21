@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 @Service
 public class AuthService {
 
+
     private UserRepository ur;
 
     @Autowired
@@ -31,5 +32,6 @@ public class AuthService {
             throw new UserNotFoundException();
         }
     }
+
 
 }
