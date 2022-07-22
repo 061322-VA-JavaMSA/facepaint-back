@@ -23,28 +23,3 @@ public class FacepaintApplication {
 	
 }
 
-//@Component
-//class AppStartupRunner implements ApplicationRunner{
-//	
-//	@Autowired
-//	private UserService us;
-//	@Override
-//	public void run(ApplicationArguments args) throws Exception{
-//		User a = new User();
-//		a.setUsername("a");
-//		a.setPassword("a pass");
-//		a.setRole(Role.ADMIN);
-//		
-//		User b = new User();
-//		b.setUsername("b");
-//		b.setPassword("b pass");
-//		b.setRole(Role.BASIC_USER);
-//		
-//		us.addUser(a);
-//		us.addUser(b);
-//		List<User> users = us.getUsers();
-//		
-//		users.forEach(user -> System.out.println(user));
-//		
-//	}
-//}
