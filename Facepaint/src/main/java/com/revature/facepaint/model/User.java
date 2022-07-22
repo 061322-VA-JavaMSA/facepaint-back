@@ -3,19 +3,26 @@ package com.revature.facepaint.model;
 import java.util.Objects;
 import javax.persistence.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="username")
+	@Column(unique = true)
 	private String username;
 	@Column(name="password")
 	private String password;
 	@Column(name="role_id")
-	@Enumerated(EnumType.STRING)
 	private Role role;
-	@Column(name="showcase_art")
+	@Column(name = "showcase_art")
 	private String imageID;
   
 	public User() {

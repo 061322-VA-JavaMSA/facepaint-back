@@ -1,5 +1,6 @@
 package com.revature.facepaint.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.List;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.facepaint.exceptions.UserNotFoundException;
 import com.revature.facepaint.model.User;
 import com.revature.facepaint.repositories.UserRepository;
+
 
 import com.revature.facepaint.exceptions.UserNotFoundException;
 import com.revature.facepaint.model.Role;
@@ -37,6 +39,13 @@ public class UserService {
 	}
 	public User updateUserImageId(User u) {
 		return ur.save(u);
+
+		
+	public User removeUserById(User u) {
+		 ur.delete(u);
+		
+		return null;
+	}
 
 	public List<User> getUsers(){
 		return ur.findAll();
