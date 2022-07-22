@@ -53,6 +53,15 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public String getImageID() {
+		return imageID;
+	}
+
+	public void setImageID(String imageID) {
+		this.imageID = imageID;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, password, role, username);
