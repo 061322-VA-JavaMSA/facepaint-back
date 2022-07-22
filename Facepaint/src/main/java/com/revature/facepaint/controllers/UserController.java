@@ -54,7 +54,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.revature.facepaint.dtos.UserDTO;
+
 import com.revature.facepaint.exceptions.UserNotFoundException;
 import com.revature.facepaint.model.Role;
 import com.revature.facepaint.model.User;
@@ -82,57 +82,7 @@ public class UserController {
 		super();
 		this.us = us;
 	}
-	
-	@GetMapping
-	@ResponseBody
-	public ResponseEntity<List<User>> getAllUsers(@RequestParam(name="role", required=false)Role role){
-		List<User> users;
-		 
-			users = us.getUsers();
-		
-		return new ResponseEntity<>(users, HttpStatus.OK);
-		
-	}
-	@DeleteMapping
-	public ResponseEntity<User> deleteUserById(@RequestBody User u){
-		
-		
-		us.removeUserById(u);
-		
-		
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
-		
-	}
-	
-	
-	
-	
-	
-	@PostMapping
-	public ResponseEntity<User> createUser(@RequestBody User user){
-		
-		User newUser = us.addUser(user);
-		
-		return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-		
-	
-	// Assumes front end changes imageID
-	@PutMapping
-	public ResponseEntity<User> updateImageID(@RequestBody User u){
-		
-		us.updateUserImageId(u);
-		
-		return new ResponseEntity<>(u, HttpStatus.OK);
-	}
-	
-	
-	@GetMapping("/{imageID}")
-	public User getUserShowcase(String imageID){
-		return us.getUserShowcase(imageID);
-	}
 
-}
-	
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> getAllUsers(@RequestParam(name="role", required=false) Role role){
 		List<UserDTO> usersDTO = new ArrayList<>();
@@ -151,6 +101,41 @@ public class UserController {
 		
 		return new ResponseEntity<>(usersDTO, HttpStatus.OK);
 	}
+	@DeleteMapping
+	public ResponseEntity<User> deleteUserById(@RequestBody User u){
+		
+		
+		us.removeUserById(u);
+		
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	// Assumes front end changes imageID
+	@PutMapping
+	public ResponseEntity<User> updateImageID(@RequestBody User u){
+		
+		us.updateUserImageId(u);
+		
+		return new ResponseEntity<>(u, HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/{imageID}")
+	public User getUserShowcase(String imageID){
+		return us.getUserShowcase(imageID);
+	}
+
+
+	
+	
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDTO> getUserById(@PathVariable("id") int id) throws UserNotFoundException{
@@ -168,4 +153,6 @@ public class UserController {
 		
 		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
 	}
+
+		
 }

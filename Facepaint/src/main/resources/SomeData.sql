@@ -1,1 +1,0 @@
-insert into users (username, password, role_id, showcase_art) values ('asanch', 'pass', 2, 'https://www.artic.edu/iiif/2/1adf2696-8489-499b-cad2-821d7fde4b33/full/843,/0/default.jpg');
