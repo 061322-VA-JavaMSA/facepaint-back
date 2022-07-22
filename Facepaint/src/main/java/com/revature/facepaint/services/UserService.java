@@ -36,9 +36,9 @@ public class UserService {
 	}
 	
 	public User removeUserById(User u) {
-		ur.delete(u);
+		 ur.delete(u);
 		
-		return null ;
+		return null;
 	}
 
 }
