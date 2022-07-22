@@ -8,8 +8,12 @@ import com.revature.facepaint.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
-	User setImageToUserShowcase(int imageID);
-	User getUserShowcase(String imageID);
-	User getUserByUsername(String username);
+//	User updateUserImageID(User user, int id);
+//	User updateUserPassword(String password);
 	
+	User getUserById(int id);
+	User getUserByImageID(String imageID);
+	
+//	User getUserByUsername(String username);
+
 }
