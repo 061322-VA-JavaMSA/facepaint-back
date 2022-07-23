@@ -14,11 +14,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(unique = true)
 	private String username;
-	@Column(name="password")
+	
 	private String password;
 	@Column(name="role_id")
 	private Role role;

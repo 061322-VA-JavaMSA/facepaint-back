@@ -18,6 +18,7 @@ insert into users (username, password) values ('fancliff7', 'enFMN9');
 insert into users (username, password) values ('ylehr8', 'jIaULHA3c');
 insert into users (username, password) values ('csineath9', 'drW43uf6WB');
 
+drop table if exists user_role
 create table if not exists user_role(
 id serial primary key,
 user_role varchar(30) default 'BASIC_USER'
