@@ -64,13 +64,12 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/users")
 public class UserController {
 
 	private UserService us;
-	private UserRepository ur;
+
 
 
 	public UserController() {
@@ -101,47 +100,18 @@ public class UserController {
 		
 		return new ResponseEntity<>(usersDTO, HttpStatus.OK);
 	}
-	@DeleteMapping
-	public ResponseEntity<User> deleteUserById(@RequestBody User u){
-		
-		
-		us.removeUserById(u);
-		
-		
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	// Assumes front end changes imageID
-	@PutMapping
-	public ResponseEntity<User> updateImageID(@RequestBody User u){
-		
-		us.updateUserImageId(u);
-		
-		return new ResponseEntity<>(u, HttpStatus.OK);
-	}
-	
-	
-	@GetMapping("/{imageID}")
-	public User getUserShowcase(String imageID){
-		return us.getUserShowcase(imageID);
-	}
-
-
-	
-	
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDTO> getUserById(@PathVariable("id") int id) throws UserNotFoundException{
 			UserDTO userDTO = new UserDTO(us.getUserById(id));
 			return new ResponseEntity<>(userDTO, HttpStatus.OK);
 	}
+	
+	//PATHING ISSUE BETWEEN GET BY ID AND GET BY IMAGE ID, POTENTIAL SIMPLE FIX
+	/*
+	 * @GetMapping("/{imageID}") public User getUserShowcase(String imageID){ return
+	 * us.getUserShowcase(imageID); }
+	 */
+
 	
 	@PostMapping
 	public ResponseEntity<UserDTO> createUser(@RequestBody User user){
@@ -153,6 +123,31 @@ public class UserController {
 		
 		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
 	}
+	
+	//MAYBE CHANGE TO USER DTO?
+	// Assumes front end changes imageID
+	@PutMapping
+	public ResponseEntity<User> updateImageID(@RequestBody User u){
+		
+		us.updateUserImageId(u);
+		
+		return new ResponseEntity<>(u, HttpStatus.OK);
+	}
+	
+
+
+	@DeleteMapping
+	public ResponseEntity<User> deleteUserById(@RequestBody User u){
+		
+		
+		us.removeUserById(u);
+		
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		
+	}
+
+
 
 		
 }
