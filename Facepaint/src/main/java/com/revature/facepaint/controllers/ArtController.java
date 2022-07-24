@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.revature.facepaint.model.User;
 import com.revature.facepaint.services.UserService;
 
 @RestController
+@CrossOrigin
 //@RequestMapping("/art")
 public class ArtController {
 	
@@ -46,7 +48,7 @@ public class ArtController {
 	}
     
     
-	@GetMapping(value = "/artwork", produces = MediaType.IMAGE_JPEG_VALUE)
+	@GetMapping(value = "/artwork")//, produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getArtPiece(@RequestParam(name="imageID") String imageID){
 		String urlFront = "https://www.artic.edu/iiif/2/";
 		String urlBack = "/full/843,/0/default.jpg";
