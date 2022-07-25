@@ -45,7 +45,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
 	private UserService us;
-	private UserRepository ur;
+
 
 
 	public UserController() {
@@ -76,23 +76,31 @@ public class UserController {
 		
 		return new ResponseEntity<>(usersDTO, HttpStatus.OK);
 	}
-	@DeleteMapping
-	public ResponseEntity<User> deleteUserById(@RequestBody User u){
-		
-		
-		us.removeUserById(u);
-		
-		
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
-		
+	@GetMapping("/{id}")
+	public ResponseEntity<UserDTO> getUserById(@PathVariable("id") int id) throws UserNotFoundException{
+			UserDTO userDTO = new UserDTO(us.getUserById(id));
+			return new ResponseEntity<>(userDTO, HttpStatus.OK);
 	}
 	
+	//PATHING ISSUE BETWEEN GET BY ID AND GET BY IMAGE ID, POTENTIAL SIMPLE FIX
+	/*
+	 * @GetMapping("/{imageID}") public User getUserShowcase(String imageID){ return
+	 * us.getUserShowcase(imageID); }
+	 */
+
 	
+	@PostMapping
+	public ResponseEntity<UserDTO> createUser(@RequestBody User user){
+
+		
+		User newUser = us.addUser(user);
+		
+		UserDTO userDTO = new UserDTO(newUser);
+		
+		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+	}
 	
-	
-	
-	
-	
+	//MAYBE CHANGE TO USER DTO?
 	// Assumes front end changes imageID
 	@PutMapping
 	public ResponseEntity<User> updateImageID(@RequestBody User u){
@@ -108,25 +116,19 @@ public class UserController {
 	}*/
 
 
-	
-	
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<UserDTO> getUserById(@PathVariable("id") int id) throws UserNotFoundException{
-			UserDTO userDTO = new UserDTO(us.getUserById(id));
-			return new ResponseEntity<>(userDTO, HttpStatus.OK);
-	}
-	
-	@PostMapping
-	public ResponseEntity<UserDTO> createUser(@RequestBody User user){
 
+	@DeleteMapping
+	public ResponseEntity<User> deleteUserById(@RequestBody User u){
 		
-		User newUser = us.addUser(user);
 		
-		UserDTO userDTO = new UserDTO(newUser);
+		us.removeUserById(u);
 		
-		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		
 	}
+
+
 
 		
 }

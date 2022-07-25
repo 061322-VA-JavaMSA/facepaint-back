@@ -19,7 +19,7 @@ public class User {
 	private int id;
 	@Column(unique = true)
 	private String username;
-	@Column(name="password")
+	
 	private String password;
 	@Column(name="role_id")
 	private Role role;
