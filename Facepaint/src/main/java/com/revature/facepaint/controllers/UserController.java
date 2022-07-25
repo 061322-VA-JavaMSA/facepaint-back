@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.facepaint.dto.UserDTO;
+import com.revature.facepaint.dtos.UserDTO;
 import com.revature.facepaint.exceptions.UserNotFoundException;
 import com.revature.facepaint.model.User;
 import com.revature.facepaint.services.AuthService;
