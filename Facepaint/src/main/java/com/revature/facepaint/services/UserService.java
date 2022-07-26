@@ -40,7 +40,7 @@ public class UserService {
 	}
 
 		
-	public User removeUserById(User u) {
+	public User removeUser(User u ) {
 		 ur.delete(u);
 		
 		return null;
