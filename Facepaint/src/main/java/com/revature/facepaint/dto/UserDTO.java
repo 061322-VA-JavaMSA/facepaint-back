@@ -1,9 +1,11 @@
 package com.revature.facepaint.dto;
 
-import com.revature.facepaint.model.Role;
-import com.revature.facepaint.model.User;
+
 
 import java.util.Objects;
+
+import com.revature.facepaint.model.Role;
+import com.revature.facepaint.model.User;
 
 public class UserDTO {
     private int id;

@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 @Service
 public class AuthService {
 
+
     private UserRepository ur;
 
     @Autowired
@@ -21,8 +22,6 @@ public class AuthService {
 
     @Transactional
     public User getByLogin(String username, String password) throws UserNotFoundException{
-       // User user = ur.findUserByUsernameAndPassword(username, password).orElseThrow(() -> new UserNotFoundException());
-        //User user;
         try{
             User user = ur.findUserByUsernameAndPassword(username, password);
             return user;

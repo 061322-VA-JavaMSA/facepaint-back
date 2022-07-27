@@ -1,10 +1,16 @@
+#this is assumed
+
 server:
  port: 8080
  
 #spring:
- # profiles:
+ # profiles: 
   # active:
    #- "@profileActive"
+   
+   #will need to override credentials
+   #url,username,password
+   #inject enviornment variable into yml
 
 spring:
   datasource:
