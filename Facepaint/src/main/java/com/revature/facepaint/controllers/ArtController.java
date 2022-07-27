@@ -35,17 +35,27 @@ public class ArtController {
 		this.us = us;
 	}
 	
+	@GetMapping(value = "/artInfo", produces = "application/json")
+    public ResponseEntity getArtAttributes(@RequestParam(name="artID") String id){
+		String urlFront = "https://api.artic.edu/api/v1/artworks/";
+		String url = urlFront+id;
+		RestTemplate restTemplate = new RestTemplate();
+
+		String artAttr = restTemplate.getForObject(url, String.class);
+		return new ResponseEntity(artAttr, HttpStatus.OK);
+	}
 	
 	
-	@GetMapping(value = "/artInfo")
-    public ResponseEntity<String> getArtAttributes(@RequestParam(name="fields") String fields){
+	
+	/*@GetMapping(value = "/artInfo", produces = "application/json")
+    public ResponseEntity getArtAttributes(@RequestParam(name="fields") String fields){
 		String urlFront = "https://api.artic.edu/api/v1/artworks?fields=";
 		String url = urlFront+fields;
 		RestTemplate restTemplate = new RestTemplate();
 
 		String artAttr = restTemplate.getForObject(url, String.class);
-		return new ResponseEntity<String>(artAttr, HttpStatus.OK);
-	}
+		return new ResponseEntity(artAttr, HttpStatus.OK);
+	}*/
     
     
 	@GetMapping(value = "/artwork")//, produces = MediaType.IMAGE_JPEG_VALUE)
