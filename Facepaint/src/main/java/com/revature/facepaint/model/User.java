@@ -19,7 +19,6 @@ public class User {
 	private int id;
 	@Column(unique = true)
 	private String username;
-	
 	private String password;
 	@Column(name="role_id")
 	private Role role;

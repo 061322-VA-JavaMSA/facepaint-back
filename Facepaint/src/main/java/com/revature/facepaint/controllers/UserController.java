@@ -39,7 +39,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/users")
 public class UserController {
@@ -118,13 +117,13 @@ public class UserController {
 
 
 	@DeleteMapping
-	public ResponseEntity<User> deleteUserById(@RequestBody User u){
+	public ResponseEntity<User> deleteUser(@RequestBody User u ){
+
+		
+		us.removeUser(u);
 		
 		
-		us.removeUserById(u);
-		
-		
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		return new ResponseEntity<>( HttpStatus.ACCEPTED);
 		
 	}
 
