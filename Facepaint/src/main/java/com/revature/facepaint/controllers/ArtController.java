@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class ArtController {
 	
 	public ArtController() {
@@ -45,9 +45,19 @@ public class ArtController {
 		String searchRet = restTemplate.getForObject(url, String.class);
 		return new ResponseEntity(searchRet, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/artwork")//, produces = MediaType.IMAGE_JPEG_VALUE)
+	public ResponseEntity<byte[]> getArtPiece(@RequestParam(name="imageID") String imageID){
+		String urlFront = "https://www.artic.edu/iiif/2/";
+		String urlBack = "/full/843,/0/default.jpg";
+		String url = urlFront+imageID+urlBack;
+		RestTemplate restTemplate = new RestTemplate();
+		byte[] artPiece = restTemplate.getForObject(url, byte[].class);
+		return new ResponseEntity<byte[]>(artPiece, HttpStatus.OK);
+	}
     
     
-	//retrieve picture of art
+	/*//retrieve picture of art
 	@GetMapping(value = "/showArt")
     public ResponseEntity<byte[]> getArtPiece(@RequestParam(name="imageId") String imageId){
 		String urlFront = "https://www.artic.edu/iiif/2/";
@@ -57,5 +67,5 @@ public class ArtController {
 
 		byte[] artPiece = restTemplate.getForObject(url, byte[].class);
 		return new ResponseEntity<byte[]>(artPiece, HttpStatus.OK);
-	}
+	}*/
 }
