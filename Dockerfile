@@ -1,3 +1,3 @@
 FROM openjdk:8-jdk-alpine
-COPY target/Facepaint.jar  Facepaint.jar
-ENTRYPOINT ["java", "-jar", "/Facepaint.jar"]
+COPY target/facepaint.jar  facepaint.jar
+ENTRYPOINT ["java", "-jar", "/facepaint.jar"]
