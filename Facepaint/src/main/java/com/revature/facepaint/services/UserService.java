@@ -8,6 +8,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+
+import com.revature.facepaint.exceptions.UserNotCreatedException;
 import com.revature.facepaint.exceptions.UserNotFoundException;
 import com.revature.facepaint.model.User;
 import com.revature.facepaint.repositories.UserRepository;
@@ -63,10 +65,12 @@ public class UserService {
 	}
 	
 	@Transactional
-	
-	public User addUser(User user) {
+	public User addUser(User user){
+
 		user.setRole(Role.BASIC_USER);
 		
 		return ur.save(user);
+	
+	
 	}
 }
