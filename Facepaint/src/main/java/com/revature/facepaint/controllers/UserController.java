@@ -80,12 +80,6 @@ public class UserController {
 			UserDTO userDTO = new UserDTO(us.getUserById(id));
 			return new ResponseEntity<>(userDTO, HttpStatus.OK);
 	}
-	
-	//PATHING ISSUE BETWEEN GET BY ID AND GET BY IMAGE ID, POTENTIAL SIMPLE FIX
-	/*
-	 * @GetMapping("/{imageID}") public User getUserShowcase(String imageID){ return
-	 * us.getUserShowcase(imageID); }
-	 */
 
 	
 	@PostMapping
