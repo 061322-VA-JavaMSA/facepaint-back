@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('cd'){
             steps{
-                sh 'cd var/lib/jenkins/workspace/Facepaint/Facepaint'
+                sh 'cd Facepaint'
             }
         }
         stage('package'){
