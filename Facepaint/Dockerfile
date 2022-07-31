@@ -1,3 +1,3 @@
 FROM openjdk:8-jdk-alpine
-COPY target/task-manager.jar  task-manager.jar
+COPY target/Facepaint.jar  Facepaint.jar
 ENTRYPOINT ["java", "-jar", "/Facepaint.jar"]
