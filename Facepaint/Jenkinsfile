@@ -12,6 +12,11 @@ pipeline {
     }
 
     stages {
+        stage('cd'{
+            steps{
+                sh 'cd Facepaint'
+            }
+        }
         stage('package'){
             steps{
                 sh 'mvn package'
