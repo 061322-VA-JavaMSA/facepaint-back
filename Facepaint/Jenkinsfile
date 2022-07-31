@@ -6,9 +6,9 @@ pipeline {
         PORT_CONTAINER: 8080
         IMAGE_TAG: "Facepaint"
         CONTAINER_NAME: "Facepaint"
-        URL=credentials('URL')
-        Username=credentials('Username')
-        Password=credentials('Password')
+        DB_URL=credentials('DB_URL')
+        DB_USER=credentials('DB_USER')
+        DB_PASS=credentials('DB_PASS')
     }
 
     stages {
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('create container'){
             steps{
-                sh 'docker run -e URL=${URL} -e Username=${Username} -e Password=${Password} -d --rm -p ${PORT_HOST}:${PORT_CONTAINER} --NAME ${CONTAINER_NAME} ${IMAGE_TAG}'
+                sh 'docker run -e DB_URL=${DB_URL} -e DB_USER=${DB_USER} -e DB_PASS=${DB_PASS} -d --rm -p ${PORT_HOST}:${PORT_CONTAINER} --NAME ${CONTAINER_NAME} ${IMAGE_TAG}'
             }
         }
     }
