@@ -2,10 +2,10 @@ pipeline {
     agent any
 
     environment{
-        PORT_HOST: 8081
-        PORT_CONTAINER: 8080
-        IMAGE_TAG: "Facepaint"
-        CONTAINER_NAME: "Facepaint"
+        PORT_HOST: "8081"
+        PORT_CONTAINER: "8080"
+        IMAGE_TAG: "facepaint"
+        CONTAINER_NAME: "facepaint"
         DB_URL=credentials('DB_URL')
         DB_USER=credentials('DB_USER')
         DB_PASS=credentials('DB_PASS')
