@@ -12,7 +12,7 @@ pipeline {
     }
 
     stages {
-        stage('cd'{
+        stage('cd'){
             steps{
                 sh 'cd Facepaint'
             }
