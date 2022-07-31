@@ -15,6 +15,7 @@ pipeline {
         stage('cd'){
             steps{
                 sh 'cd Facepaint'
+                sh 'cd Facepaint'
                 sh 'ls'
             }
         }
