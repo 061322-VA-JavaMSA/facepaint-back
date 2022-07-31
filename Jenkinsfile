@@ -10,6 +10,7 @@ pipeline {
         DB_USER=credentials('DB_USER')
         DB_PASS=credentials('DB_PASS')
     }
+    stages{
         stage('package'){
             steps{
                 sh 'mvn package'
@@ -35,4 +36,5 @@ pipeline {
                 sh 'docker run -e DB_URL=${DB_URL} -e DB_USER=${DB_USER} -e DB_PASS=${DB_PASS} -d --rm -p ${PORT_HOST}:${PORT_CONTAINER} --NAME ${CONTAINER_NAME} ${IMAGE_TAG}'
             }
         }
+    }
 }
