@@ -82,6 +82,7 @@
 	</dependencies>
 	
 	<build>
+		<finalName>facepaint</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
