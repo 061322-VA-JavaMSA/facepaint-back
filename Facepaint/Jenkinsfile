@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('cd'){
             steps{
-                sh 'cd Facepaint'
+                sh 'cd Facepaint/Facepaint'
             }
         }
         stage('package'){
