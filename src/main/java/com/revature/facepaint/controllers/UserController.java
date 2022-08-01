@@ -92,16 +92,24 @@ public class UserController {
 		
 		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
 	}
+
+	@PutMapping
+	public User updateUserById(@RequestBody User u){
+		return us.updateUser(u);
+  }
 	
 	//MAYBE CHANGE TO USER DTO?
 	// Assumes front end changes imageID
-	@PutMapping
-	public ResponseEntity<User> updateImageID(@RequestBody User u){
-		
-		us.updateUserImageId(u);
-		
-		return new ResponseEntity<>(u, HttpStatus.OK);
-	}
+	/*
+	 * @PutMapping public ResponseEntity<User> updateShowcase(@RequestBody int
+	 * id, @RequestBody String imageID){
+	 * 
+	 * 
+	 * System.out.println(imageID); us.updateInfo(imageID, id);
+	 * 
+	 * 
+	 * return new ResponseEntity<>(HttpStatus.OK); }
+	 */
 	
 	/*@GetMapping("/{imageID}")
 	public User getUserShowcase(String imageID){
