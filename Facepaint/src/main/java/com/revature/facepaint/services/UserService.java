@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.revature.facepaint.dto.UserDTO;
 import com.revature.facepaint.exceptions.UserNotCreatedException;
 import com.revature.facepaint.exceptions.UserNotFoundException;
 import com.revature.facepaint.model.User;
@@ -37,9 +38,16 @@ public class UserService {
 	public User getUserShowcase(String imageID) {
 		return ur.getUserByImageID(imageID);
 	}
-	public User updateUserImageId(User u) {
+	public void setImageIDForUser(int id,String imageID) {
+		User user = ur.getUserById(id);
+		user.setImageID(imageID);
+		ur.save(user);
+	
+	}
+	public User updateUser(User u) {
 		return ur.save(u);
 	}
+	
 
 		
 	public User removeUser(User u ) {

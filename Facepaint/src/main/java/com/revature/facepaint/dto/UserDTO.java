@@ -11,7 +11,7 @@ public class UserDTO {
     private int id;
     private String username;
     private Role role;
-    private String imageId;
+    private String imageID;
 
     public UserDTO(){
         super();
@@ -21,7 +21,7 @@ public class UserDTO {
         id = u.getId();
         username = u.getUsername();
         role = u.getRole();
-        imageId = u.getImageID();
+        imageID = u.getImageID();
     }
 
     public int getId() {
@@ -48,12 +48,12 @@ public class UserDTO {
         this.role = role;
     }
 
-    public String getImageId() {
-        return imageId;
+    public String getImageID() {
+        return imageID;
     }
 
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
+    public void setImageID(String imageId) {
+        this.imageID = imageId;
     }
 
     @Override
@@ -61,12 +61,12 @@ public class UserDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return id == userDTO.id && username.equals(userDTO.username) && role == userDTO.role && Objects.equals(imageId, userDTO.imageId);
+        return id == userDTO.id && username.equals(userDTO.username) && role == userDTO.role && Objects.equals(imageID, userDTO.imageID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, role, imageId);
+        return Objects.hash(id, username, role, imageID);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class UserDTO {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", role=" + role +
-                ", imageId='" + imageId + '\'' +
+                ", imageId='" + imageID + '\'' +
                 '}';
     }
 }
