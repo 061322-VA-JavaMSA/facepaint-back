@@ -2,19 +2,18 @@ pipeline {
     agent any
 
     environment{
-        PORT_HOST: 8081
-        PORT_CONTAINER: 8080
-        IMAGE_TAG: "Facepaint"
-        CONTAINER_NAME: "Facepaint"
-        URL=credentials('URL')
-        Username=credentials('Username')
-        Password=credentials('Password')
+        PORT_HOST="8081"
+        PORT_CONTAINER="8080"
+        IMAGE_TAG="facepaint"
+        CONTAINER_NAME="facepaint"
+        DB_URL=credentials('DB_URL')
+        DB_USER=credentials('DB_USER')
+        DB_PASS=credentials('DB_PASS')
     }
-
-    stages {
+    stages{
         stage('package'){
             steps{
-                sh 'mvn package -Dmaven.test.skip=true -Pprod'
+                sh 'mvn package'
             }
         }
         stage('remove previous image if exists'){
@@ -34,7 +33,7 @@ pipeline {
         }
         stage('create container'){
             steps{
-                sh 'docker run -e URL=${URL} -e Username=${Username} -e Password=${Password} -d --rm -p ${PORT_HOST}:${PORT_CONTAINER} --NAME ${CONTAINER_NAME} ${IMAGE_TAG}'
+                sh 'docker run -e DB_URL=${DB_URL} -e DB_USER=${DB_USER} -e DB_PASS=${DB_PASS} -d --rm -p ${PORT_HOST}:${PORT_CONTAINER} --name ${CONTAINER_NAME} ${IMAGE_TAG}'
             }
         }
     }
