@@ -92,6 +92,7 @@ public class UserController {
 		
 		return new ResponseEntity<>(userDTO, HttpStatus.CREATED);
 	}
+
 	@PutMapping
 	public User updateUserById(@RequestBody User u){
 		return us.updateUser(u);
